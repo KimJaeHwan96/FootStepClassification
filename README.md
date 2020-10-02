@@ -11,32 +11,41 @@
 datasets에는 28명의 서로 다른 걸음걸이 데이터가 10장씩 총 280장 있습니다.   
 이 데이터들을 252장의 train 데이터와 28장의 test 데이터로 나눴습니다.   
 
-1. 순차적으로 신경망을 쌓기위해 Sequential 클래스의 객체를 만듭니다. 
+순차적으로 신경망을 쌓기위해 Sequential 클래스의 객체를 만듭니다. 
 
     model = Sequential()   
 
-- - -
 
-2. 128, kernel_size=(3,3) => kernel을 3x3x128으로 생성. padding='valid' => zero padding을 사용.
+128, kernel_size=(3,3) => kernel을 3x3x128으로 생성. padding='valid' => zero padding을 사용.
 activation='relu' => 활성함수로 relu를 씀.  input_shape=(150, 272, 1) => 이미지는 150x272 크기, 흑백으로 받음.
 
     model.add(Conv2D(128, kernel_size = (3, 3), padding='valid', activation='relu', input_shape=(150, 272, 1)))   
-  
+
+
+
 max pooling을 사용하여 이미지 크기를 줄입니다.
  
     model.add(MaxPooling2D(pool_size=(2, 2)))
- 
+
+
+
 dropout을 사용하여 overfitting을 방지합니다
   
     model.add(Dropout(0.25))
 
+
+
 Flatten()을 이용하여 2차원의 데이터를 1차원으로 만들어줍니다.
 
     model.add(Flatten())
- 
+
+
+
  1차원의 데이터들을 28개로 만들고 활성함수인 softmax를 이용하여 각 클래스의 확률을 계산해줍니다.
 
     model.add(Dense(28, activation='softmax'))
+
+
 
 손실함수로 cross_entropy를 사용하고 adam으로 최적화 해줍니다
 
