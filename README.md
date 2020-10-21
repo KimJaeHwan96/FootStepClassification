@@ -49,13 +49,24 @@ Flatten()을 이용하여 2차원의 데이터를 1차원으로 만들어줍니�
 
 
 
-손실함수로 cross_entropy를 사용하고 adam으로 최적화 해줍니다
+손실함수로 cross_entropy를 사용하면 총합이 1인 각 클래스의 확률이 계산됩니다.     
 
-    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-
-
+각 파라미터마다 다른 크기의 업데이트를 적용하는 adam(Adaptive Moment Estimation)으로 최적화 해줍니다.    
 
 
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])    
+
+
+
+
+위의 코드들을 작성하면 다음과 같은 신경망을 쌓게 됩니다.    
+
+
+<img src="https://user-images.githubusercontent.com/64777061/96664888-b05b7680-138e-11eb-8612-f61f0ffb6813.PNG" width="40%" height="20%"></img>
+
+
+
+신경마
 
 - - -
 
